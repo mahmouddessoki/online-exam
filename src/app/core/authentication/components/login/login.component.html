@@ -1,0 +1,63 @@
+<section id="form-container">
+
+  <h2 class="form-header">sign in</h2>
+  <form [formGroup]="authForm" (ngSubmit)="login()">
+    <div class="form-input">
+      @let email = authForm.get('email');
+      <input InputAlert [inputControl]="email!" formControlName="email" type="email" class="form-control"
+        placeholder="email..">
+      <validation-messages [control]="email" />
+    </div>
+    <div class="form-input position-relative">
+      @let pass = authForm.get('password');
+      <input InputAlert [inputControl]="pass!" [type]="passwordFlag?'text':'password'" class="form-control last-input"
+        placeholder="password" formControlName="password">
+      <validation-messages [control]="pass" />
+    <i (click)="showPassword()" [class]="{
+        'fa-eye': !passwordFlag,
+        'fa-eye-slash': passwordFlag
+      }" class="fa-solid fa-eye position-absolute top-50 translate-middle"></i>
+    </div>
+
+    <p class="text-end">
+
+      <a routerLink="/forgot-password" class="main-color">
+        Recover Password?
+      </a>
+    </p>
+    <div class="clearfix"></div>
+    <button class="btn d-block mx-auto main-bg w-100 text-white">
+      @if (isLoading) {
+      <span class="loader"></span>
+      }@else {
+      Sign in
+      }
+
+    </button>
+    @if (resMsg) {
+    @if (resMsg == "success") {
+    <div class="alert alert-success text-center" role="alert">
+      {{resMsg}}
+    </div>
+    }@else {
+    <div class="alert alert-danger text-capitalize text-center" role="alert">
+      {{resMsg}} <br>
+    </div>
+    }
+    }
+    <div class="social-login">
+
+      <p class="text-capitalize text-center">or continue with</p>
+      <div class="social-icons d-flex justify-content-evenly">
+        <a href="">
+          <i class="fa-brands fa-google"></i>
+        </a>
+        <a href=""><i class="fa-brands fa-facebook"></i></a>
+        <a href=""><i class="fa-brands fa-twitter"></i></a>
+        <a href=""><i class="fa-brands text-black fa-apple"></i></a>
+      </div>
+    </div>
+  </form>
+
+
+</section>

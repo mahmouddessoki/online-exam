@@ -1,0 +1,49 @@
+<section id="form-container">
+
+  <h2 class="form-header text-capitalize">verify code</h2>
+  <form [formGroup]="authForm" (ngSubmit)="verifyCode()">
+    <div class="form-input">
+      @let code = authForm.get('resetCode')!;
+      <input InputAlert formControlName="resetCode" [inputControl]="code" type="text" class="form-control" placeholder="Enter your code..">
+      <validation-messages [control]="code" />
+    </div>
+    <p class="text-capitalize text-end">
+      Didn’t receive a code ?
+      <a routerLink="../login" class="main-color text-decoration-none">Resend</a>
+    </p>
+    <div class="clearfix"></div>
+    <button class="btn d-block mx-auto main-bg w-100 text-white">
+      @if (isLoading) {
+      <span class="loader"></span>
+      }@else {
+      Verify
+      }
+
+    </button>
+    @if (resMsg) {
+    @if (resMsg == "Success") {
+    <div class="alert alert-success text-capitalize text-center" role="alert">
+      Verified successfully
+    </div>
+    }@else {
+    <div class="alert alert-danger text-capitalize text-center" role="alert">
+      {{resMsg}} <br>
+    </div>
+    }
+    }
+    <div class="social-login">
+
+      <p class="text-capitalize text-center">or continue with</p>
+      <div class="social-icons d-flex justify-content-evenly">
+        <a href="">
+          <i class="fa-brands fa-google"></i>
+        </a>
+        <a href=""><i class="fa-brands fa-facebook"></i></a>
+        <a href=""><i class="fa-brands fa-twitter"></i></a>
+        <a href=""><i class="fa-brands text-black fa-apple"></i></a>
+      </div>
+    </div>
+  </form>
+
+
+</section>

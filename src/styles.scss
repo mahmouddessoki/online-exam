@@ -1,0 +1,187 @@
+/* You can add global styles to this file, and also import other style files */
+@use 'styles/scss/functions' as func;
+@use 'styles/scss/variables' as var;
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+.main-color {
+  color: var.$main-color;
+}
+
+.main-bg {
+  background-color: var.$main-color;
+}
+
+#form-container {
+  & {
+    font-family: "Inter", sans-serif;
+    padding: 80px 0px;
+  }
+
+  .form-header,
+  .form-input {
+    margin-bottom: (func.PXToREM(30px))+rem;
+
+  }
+
+  .form-input:has(.last-input) {
+    margin-bottom: func.PXToREM(16px)+rem;
+  }
+
+
+  .form-header {
+    font-size: (func.PXToREM(25px))+rem;
+    line-height: 100%;
+    font-weight: 700;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+
+  }
+
+  form {
+    & {
+      width: (func.PXToREM(410px))+rem;
+    }
+
+    input {
+
+      & {
+        box-shadow: 0px 10px 20px 0px var.$shadow-color;
+        border-radius: 9.91px;
+        padding: func.PXToREM(16px)+rem func.PXToREM(12px)+rem;
+        border: func.PXToREM(0.99px)+rem solid var.$border-color;
+        background-color: var.$input-bg;
+      }
+
+      &::placeholder {
+        text-transform: capitalize;
+      }
+
+
+
+      &.is-invalid {
+        border-color: var.$invalid-border-color;
+        background-color: var.$invalid-bg-color;
+      }
+
+      &.is-valid {
+        border-color: var.$valid-border-color;
+        background-color: var.$valid-bg-color;
+      }
+
+
+
+    }
+
+    .fa-eye,
+    .fa-eye-slash {
+      right: func.PXToREM(18px)+rem;
+      cursor: pointer;
+      font-size: func.PXToREM(18px)+rem;
+      color: #949BA5;
+      top: func.PXToREM(30px)+rem !important;
+    }
+
+    button {
+      box-shadow: 0px 18px 30px 0px var.$shadow-color;
+      border-radius: func.PXToREM(16px)+rem;
+      padding: func.PXToREM(15px)+rem;
+      margin-top: func.PXToREM(35px)+rem;
+      margin-bottom: func.PXToREM(32px)+rem;
+      background-color: var.$main-color !important;
+
+
+    }
+
+
+
+    .social-login {
+      color: #6C737F;
+      font-size: func.PXToREM(16.4px)+rem;
+
+      p {
+        position: relative;
+      }
+
+      p::after,
+      p::before {
+        content: "";
+        height: func.PXToREM(1px)+rem;
+        display: block;
+        width: func.PXToREM(133px)+rem;
+        background-color: #E7E7E7;
+        position: absolute;
+        right: 0;
+        top: 50%;
+
+      }
+
+      p::before {
+        left: 0;
+      }
+
+      .social-icons a {
+        text-decoration: none;
+        width: func.PXToREM(60px)+rem;
+        height: func.PXToREM(59px)+rem;
+        border-radius: func.PXToREM(15.38px)+rem;
+        border-width: func.PXToREM(1.02px)+rem;
+        gap: func.PXToREM(10.25px)+rem;
+        padding: func.PXToREM(19.48px)+rem;
+        border: func.PXToREM(1.02px)+rem solid var.$border-color;
+        box-shadow: 0px 18.45px 30.75px 0px var.$shadow-color;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+
+
+      }
+
+      .social-icons i {
+        font-size: func.PXToREM(20px)+rem !important;
+
+        &.fa-facebook {
+          color: var.$main-color;
+        }
+
+        &.fa-twitter {
+          color: #1DA1F2;
+        }
+      }
+
+
+    }
+  }
+
+
+
+
+
+
+}
+
+
+
+
+
+.loader {
+  width: 30px;
+  height: 30px;
+  border: 5px dotted #FFF;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotation 2s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

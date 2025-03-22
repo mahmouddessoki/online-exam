@@ -1,0 +1,43 @@
+// @use 'src/styles/scss/functions' as var;
+nav {
+  & {
+    padding-right:  80px;
+    padding-top: 80px;
+    font-family: "Inter", sans-serif;
+  }
+
+
+  .navbar-nav {
+    gap: 10px;
+  }
+
+  .nav-link {
+    font-size: 20px;
+    line-height: 100%;
+
+
+    &.second {
+      font-weight: 700;
+
+    }
+
+
+    &.third {
+      box-shadow: 0px 10px 30px 0px #4461F20D;
+      border: 1px solid #E0E0E9;
+      border-radius: 15px;
+      padding: 9px 26px;
+    }
+
+    &.second,
+    &.third {
+      color: #4461F2 !important;
+    }
+  }
+  .nav-item {
+    cursor: pointer;
+  }
+  .dropdown-toggle::after {
+    margin-left: 0;
+  }
+}
