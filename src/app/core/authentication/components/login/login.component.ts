@@ -1,11 +1,13 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { AuthApiService } from 'auth-api';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { saveUserData } from '../../../../store/actions/auth.actions';
 import { InputAlertDirective } from '../../directives/input-alert.directive';
-import { ValidationMessagesComponent } from '../validation-messages/validation-messages.component';
 import { globalValidator } from '../../helpers/global-validators';
+import { ValidationMessagesComponent } from '../validation-messages/validation-messages.component';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +15,7 @@ import { globalValidator } from '../../helpers/global-validators';
     RouterLink,
     ReactiveFormsModule,
     ValidationMessagesComponent,
-    InputAlertDirective
+    InputAlertDirective,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
@@ -22,12 +24,14 @@ export class LoginComponent {
   private readonly fb = inject(FormBuilder)
   private readonly router = inject(Router)
   private readonly authApiService = inject(AuthApiService)
+  private readonly store = inject(Store)
   authForm!: FormGroup;
   isLoading: boolean = false;
   subscription: Subscription = new Subscription();
   resMsg!: string;
   passwordFlag: boolean = false;
   rePasswordFlag: boolean = false;
+
   ngOnInit(): void {
     this.createForm()
   }
@@ -51,6 +55,14 @@ export class LoginComponent {
         this.isLoading = false;
         this.resMsg = res.message;
         this.authApiService.saveToken(res.token)
+
+        this.store.dispatch(saveUserData({
+          user: {
+            token: res.token,
+            userEmail: res.userEmail!
+          }
+        }))
+
         setTimeout(() => {
           this.router.navigate(['/home']);
         }, 1500)
