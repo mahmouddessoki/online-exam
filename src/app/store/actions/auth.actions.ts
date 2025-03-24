@@ -1,7 +1,6 @@
 import { createAction, props } from "@ngrx/store";
 export interface  userData{
-  token : string;
-  userEmail : string;
+  token : string | null;
 }
 
 export const saveUserData = createAction(

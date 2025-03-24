@@ -59,7 +59,6 @@ export class LoginComponent {
         this.store.dispatch(saveUserData({
           user: {
             token: res.token,
-            userEmail: res.userEmail!
           }
         }))
 
