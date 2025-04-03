@@ -9,8 +9,7 @@ import { BASE_URL } from 'auth-api';
 import { provideStore } from '@ngrx/store';
 import { authReducer } from './store/reducers/auth.reducer';
 import { provideEffects } from '@ngrx/effects';
-import { counterEffects } from './store/effects/counter.effects';
-import { counterReducer } from './store/reducers/counter.reducer';
+import { authEffects } from './store/effects/auth.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }),
@@ -20,6 +19,5 @@ export const appConfig: ApplicationConfig = {
     { provide: BASE_URL, useValue: environment.API_URL },
     provideStore({
         auth: authReducer,
-        counter: counterReducer
-    }), provideEffects([counterEffects])]
+    }), provideEffects([authEffects])]
 };

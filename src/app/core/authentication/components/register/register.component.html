@@ -63,36 +63,12 @@
       <a routerLink="../login" class="main-color text-decoration-none">login </a>
     </p>
     <div class="clearfix"></div>
-    <button
-      class="btn d-flex align-items-center justify-content-center mx-auto main-bg w-100 text-white text-capitalize">
-      @if (isLoading) {
-      <span class="loader"></span>
-      }@else {
-      create account
-      }
-    </button>
+    @let isValid = authForm.valid;
+    <app-form-btn btnText="Create Account" [isValid]="isValid" [isLoading]="isLoading" />
     @if (resMsg) {
-    @if (resMsg == "success") {
-    <div class="alert alert-success text-center" role="alert">
-      {{resMsg}}
-    </div>
-    }@else {
-    <div class="alert alert-danger text-capitalize text-center" role="alert">
-      {{resMsg}} <br>
-    </div>
+    <app-response-msg [resMsg]="resMsg" />
     }
-    }
-    <div class="social-login">
-      <p class="text-capitalize text-center">or continue with</p>
-      <div class="social-icons d-flex justify-content-evenly">
-        <a href="">
-          <i class="fa-brands fa-google"></i>
-        </a>
-        <a href=""><i class="fa-brands fa-facebook"></i></a>
-        <a href=""><i class="fa-brands fa-twitter"></i></a>
-        <a href=""><i class="fa-brands text-black fa-apple"></i></a>
-      </div>
-    </div>
+
   </form>
 
 

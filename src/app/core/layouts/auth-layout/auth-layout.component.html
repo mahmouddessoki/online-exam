@@ -1,9 +1,9 @@
 <section id="auth-layout" class="min-vh-100">
 
-  <div class="d-flex ">
-    <div class="col-md-6 posture">
-      <div class="auth-postre d-flex flex-column">
-        <h1 class="d-flex flex-column h-100">
+  <div class="d-flex flex-wrap">
+    <div class="col-lg-6 posture d-lg-block d-none ">
+      <div class="auth-postre h-100 d-flex flex-column">
+        <h1 class="d-flex flex-column">
           Welcome to
           <span>elevate</span>
         </h1>
@@ -13,11 +13,12 @@
         <img src="assets/imgs/bro.png" alt="auth-image">
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-lg-6 col-12">
 
       <app-navbar />
-      <div class="auth-form d-flex  justify-content-center">
+      <div class="auth-form  d-flex flex-column mx-auto justify-content-center">
         <router-outlet />
+        <app-social-icons />
       </div>
 
     </div>

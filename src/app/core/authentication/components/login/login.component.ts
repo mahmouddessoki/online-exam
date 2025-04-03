@@ -8,6 +8,9 @@ import { saveUserData } from '../../../../store/actions/auth.actions';
 import { InputAlertDirective } from '../../directives/input-alert.directive';
 import { globalValidator } from '../../helpers/global-validators';
 import { ValidationMessagesComponent } from '../validation-messages/validation-messages.component';
+import { ResponseMsgComponent } from "../../../layouts/auth-layout/components/response-msg/response-msg.component";
+import { FormBtnComponent } from "../../../layouts/auth-layout/components/form-btn/form-btn.component";
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +19,8 @@ import { ValidationMessagesComponent } from '../validation-messages/validation-m
     ReactiveFormsModule,
     ValidationMessagesComponent,
     InputAlertDirective,
+    ResponseMsgComponent,
+    FormBtnComponent
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
@@ -24,6 +29,7 @@ export class LoginComponent {
   private readonly fb = inject(FormBuilder)
   private readonly router = inject(Router)
   private readonly authApiService = inject(AuthApiService)
+  private readonly authService = inject(AuthService)
   private readonly store = inject(Store)
   authForm!: FormGroup;
   isLoading: boolean = false;
@@ -54,8 +60,7 @@ export class LoginComponent {
       next: (res) => {
         this.isLoading = false;
         this.resMsg = res.message;
-        this.authApiService.saveToken(res.token)
-
+        this.authService.saveUserEmail(this.authForm.get('email')?.value)
         this.store.dispatch(saveUserData({
           user: {
             token: res.token,
@@ -77,10 +82,8 @@ export class LoginComponent {
 
   showPassword(pass: string = '') {
     if (pass) {
-
       this.rePasswordFlag = !this.rePasswordFlag;
     } else {
-
       this.passwordFlag = !this.passwordFlag;
     }
 

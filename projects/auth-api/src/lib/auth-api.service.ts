@@ -54,15 +54,6 @@ export class AuthApiService implements AuthAPI {
     )
 
   }
-  saveToken(token: string): void {
-    if (isPlatformBrowser(this.platform_id)) {
-      localStorage.setItem('token', token);
-    }
 
-  }
-  removeToken(): void {
-    if (isPlatformBrowser(this.platform_id)) {
-      localStorage.removeItem('token');
-    }
-  }
+ 
 }

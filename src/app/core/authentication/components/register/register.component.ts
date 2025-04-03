@@ -7,13 +7,14 @@ import { InputAlertDirective } from '../../directives/input-alert.directive';
 import { globalValidator } from '../../helpers/global-validators';
 import { passwordMisMatch } from '../../helpers/password-match';
 import { ValidationMessagesComponent } from "../validation-messages/validation-messages.component";
+import { FormBtnComponent } from "../../../layouts/auth-layout/components/form-btn/form-btn.component";
+import { ResponseMsgComponent } from "../../../layouts/auth-layout/components/response-msg/response-msg.component";
 @Component({
   selector: 'app-register',
   imports: [RouterLink,
     ReactiveFormsModule,
     ValidationMessagesComponent,
-    InputAlertDirective
-  ],
+    InputAlertDirective, FormBtnComponent, ResponseMsgComponent],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })

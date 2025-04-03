@@ -1,0 +1,13 @@
+<div class="social-login flex-grow-1 w-100 mb-3">
+
+  <p class="text-capitalize text-center">or continue with</p>
+  <div class="social-icons d-flex justify-content-evenly">
+    @for (icon of socialIcons; track $index) {
+
+      <a href="">
+        <i class="{{'fa-brands'}} {{icon}}"></i>
+
+      </a>
+    }
+  </div>
+</div>

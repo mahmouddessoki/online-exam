@@ -5,6 +5,9 @@ nav {
     padding-top: 80px;
     font-family: "Inter", sans-serif;
   }
+  .navbar-brand {
+    color: #4461F2;
+  }
 
 
   .navbar-nav {
@@ -40,4 +43,15 @@ nav {
   .dropdown-toggle::after {
     margin-left: 0;
   }
+}
+
+
+@media all and (max-width: 991px) {
+  nav {
+    & {
+      padding-right: 0;
+      padding-top: 0;
+    }
+  }
+
 }

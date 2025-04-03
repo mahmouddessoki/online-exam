@@ -1,0 +1,58 @@
+@use '../../../../../../styles/scss/functions' as func;
+@use '../../../../../../styles/scss/variables' as var;
+.social-login {
+  color: #6C737F;
+  font-size: func.PXToREM(16.4px)+rem;
+
+  p {
+    position: relative;
+  }
+
+  p::after,
+  p::before {
+    content: "";
+    height: func.PXToREM(1px)+rem;
+    display: block;
+    width: func.PXToREM(133px)+rem;
+    background-color: #E7E7E7;
+    position: absolute;
+    right: 0;
+    top: 50%;
+
+  }
+
+  p::before {
+    left: 0;
+  }
+
+  .social-icons a {
+    text-decoration: none;
+    width: func.PXToREM(60px)+rem;
+    height: func.PXToREM(59px)+rem;
+    border-radius: func.PXToREM(15.38px)+rem;
+    border-width: func.PXToREM(1.02px)+rem;
+    gap: func.PXToREM(10.25px)+rem;
+    padding: func.PXToREM(19.48px)+rem;
+    border: func.PXToREM(1.02px)+rem solid var.$border-color;
+    box-shadow: 0px 18.45px 30.75px 0px var.$shadow-color;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+
+  }
+
+  .social-icons i {
+    font-size: func.PXToREM(20px)+rem !important;
+
+    &.fa-facebook {
+      color: var.$main-color;
+    }
+
+    &.fa-twitter {
+      color: #1DA1F2;
+    }
+  }
+
+
+}

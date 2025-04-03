@@ -1,11 +1,16 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { RouterLink } from '@angular/router';
 import { AuthApiService } from 'auth-api';
-import { globalValidator } from '../../helpers/global-validators';
+import { Subscription } from 'rxjs';
+import { FormBtnComponent } from "../../../layouts/auth-layout/components/form-btn/form-btn.component";
+import { ResponseMsgComponent } from "../../../layouts/auth-layout/components/response-msg/response-msg.component";
 import { InputAlertDirective } from '../../directives/input-alert.directive';
+import { globalValidator } from '../../helpers/global-validators';
+import { AuthService } from '../../services/auth.service';
+import { SetPasswordComponent } from "../set-password/set-password.component";
 import { ValidationMessagesComponent } from '../validation-messages/validation-messages.component';
+import { VerifyCodeComponent } from "../verify-code/verify-code.component";
 
 @Component({
   selector: 'app-forget-password',
@@ -13,15 +18,20 @@ import { ValidationMessagesComponent } from '../validation-messages/validation-m
     RouterLink,
     ReactiveFormsModule,
     ValidationMessagesComponent,
-    InputAlertDirective
-  ],
+    InputAlertDirective,
+    FormBtnComponent,
+    ResponseMsgComponent,
+    VerifyCodeComponent,
+    SetPasswordComponent
+],
   templateUrl: './forget-password.component.html',
   styleUrl: './forget-password.component.scss'
 })
 export class ForgetPasswordComponent {
   private readonly fb = inject(FormBuilder)
-  private readonly router = inject(Router)
   private readonly authApiService = inject(AuthApiService)
+  private readonly authService = inject(AuthService)
+  steps = computed(()=>this.authService.steps())
   authForm!: FormGroup;
   isLoading: boolean = false;
   subscription: Subscription = new Subscription();
@@ -50,7 +60,7 @@ export class ForgetPasswordComponent {
         this.isLoading = false;
         this.resMsg = res.message;
         setTimeout(() => {
-          this.router.navigate(['/verify']);
+         this.authService.steps.set(1)
         },1500)
       },
       error: (err) => {
@@ -66,6 +76,7 @@ export class ForgetPasswordComponent {
 
   ngOnDestroy(): void {
     this.subscription?.unsubscribe();
+    this.authService.steps.set(0);
   }
 
 }

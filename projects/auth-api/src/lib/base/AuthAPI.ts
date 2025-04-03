@@ -14,6 +14,5 @@ export abstract class AuthAPI {
   abstract forgetPass(data: ForgetData): Observable<msgRes>
   abstract verifyCode(data: VerifyData): Observable<VerifyRes>
   abstract setPassword(data: SetPassData): Observable<authRes>
-  abstract saveToken(token: string): void;
-  abstract removeToken(): void;
+
 }

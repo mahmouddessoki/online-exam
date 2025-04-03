@@ -7,6 +7,11 @@ import { globalValidator } from '../../helpers/global-validators';
 import { passwordMisMatch } from '../../helpers/password-match';
 import { InputAlertDirective } from '../../directives/input-alert.directive';
 import { ValidationMessagesComponent } from '../validation-messages/validation-messages.component';
+import { FormBtnComponent } from "../../../layouts/auth-layout/components/form-btn/form-btn.component";
+import { ResponseMsgComponent } from "../../../layouts/auth-layout/components/response-msg/response-msg.component";
+import { AuthService } from '../../services/auth.service';
+import { Store } from '@ngrx/store';
+import { saveUserData } from '../../../../store/actions/auth.actions';
 
 @Component({
   selector: 'app-set-password',
@@ -14,7 +19,9 @@ import { ValidationMessagesComponent } from '../validation-messages/validation-m
     RouterLink,
     ReactiveFormsModule,
     ValidationMessagesComponent,
-    InputAlertDirective
+    InputAlertDirective,
+    FormBtnComponent,
+    ResponseMsgComponent
   ],
   templateUrl: './set-password.component.html',
   styleUrl: './set-password.component.scss'
@@ -23,6 +30,8 @@ export class SetPasswordComponent {
   private readonly fb = inject(FormBuilder)
   private readonly router = inject(Router)
   private readonly authApiService = inject(AuthApiService)
+  private readonly authService = inject(AuthService)
+  private readonly store = inject(Store)
   authForm!: FormGroup;
   isLoading: boolean = false;
   subscription: Subscription = new Subscription();
@@ -35,7 +44,6 @@ export class SetPasswordComponent {
   createForm() {
     this.authForm = this.fb.group({
 
-      email: [null, globalValidator.emailValidate],
       password: [null, globalValidator.passwordValidate],
       rePassword: [null],
     }, { validators: passwordMisMatch });
@@ -50,16 +58,21 @@ export class SetPasswordComponent {
     }
     this.isLoading = true;
     let data = {
-      email: this.authForm.get('email')?.value,
+      email: this.authService.getUserEmail()!,
       newPassword: this.authForm.get('password')?.value,
     };
     this.subscription = this.authApiService.setPassword(data).subscribe({
       next: (res) => {
         this.isLoading = false;
         this.resMsg = res.message;
-        this.authApiService.saveToken(res.token)
+        this.store.dispatch(saveUserData({
+          user: {
+            token: res.token,
+          }
+        }))
         setTimeout(() => {
           this.router.navigate(['/home']);
+          this.authService.steps.set(0)
         }, 1500)
 
       },

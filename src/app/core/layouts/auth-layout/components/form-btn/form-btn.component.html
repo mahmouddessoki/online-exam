@@ -1,0 +1,8 @@
+<button class="btn d-block mx-auto main-bg  w-100 text-white" [disabled]="!isValid()">
+  @if (isLoading()) {
+  <app-loader />
+  }@else {
+  {{btnText()}}
+  }
+
+</button>

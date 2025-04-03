@@ -14,7 +14,7 @@
 #form-container {
   & {
     font-family: "Inter", sans-serif;
-    padding: 80px 0px;
+    padding-top: 80px;
   }
 
   .form-header,
@@ -40,9 +40,7 @@
   }
 
   form {
-    & {
-      width: (func.PXToREM(410px))+rem;
-    }
+
 
     input {
 
@@ -52,6 +50,7 @@
         padding: func.PXToREM(16px)+rem func.PXToREM(12px)+rem;
         border: func.PXToREM(0.99px)+rem solid var.$border-color;
         background-color: var.$input-bg;
+        margin-bottom: func.PXToREM(5px)+rem;
       }
 
       &::placeholder {
@@ -165,23 +164,3 @@
 
 
 
-.loader {
-  width: 30px;
-  height: 30px;
-  border: 5px dotted #FFF;
-  border-radius: 50%;
-  display: inline-block;
-  position: relative;
-  box-sizing: border-box;
-  animation: rotation 2s linear infinite;
-}
-
-@keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
