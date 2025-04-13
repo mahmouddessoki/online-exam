@@ -1,0 +1,95 @@
+ @use "../../../../../styles/scss/functions" as func;
+ @use "../../../../../styles/scss/variables" as var;
+
+ .modal-header {
+   h4 {
+     font-size: func.PXToREM(14px)+rem;
+     color: var.$main-color;
+   }
+
+   .time {
+     font-size: func.PXToREM(20px)+rem;
+     color: #11CE19;
+   }
+
+   .question-dots {
+     span {
+       display: inline-block;
+       width: func.PXToREM(10px)+rem;
+       height: func.PXToREM(10px)+rem;
+       background-color: #D9D9D9;
+       border-radius: 50%;
+
+       &.active {
+         background-color: var.$main-color;
+       }
+     }
+   }
+ }
+
+ .question-container {
+   p {
+     font-size: func.PXToREM(24px)+rem;
+     margin-bottom: func.PXToREM(24px)+rem !important;
+     color: #0F0F0F;
+   }
+
+   ul {
+     margin-bottom: func.PXToREM(40px)+rem;
+
+     li {
+      label {
+
+
+               font-size: func.PXToREM(15px)+rem;
+               background-color: #EDEFF3;
+               padding: func.PXToREM(16px)+rem func.PXToREM(8px)+rem;
+               margin-bottom: func.PXToREM(16px)+rem;
+               border-radius: func.PXToREM(10px)+rem;
+               width: 100%;
+
+               &.active {
+                 background: #CCD7EB;
+               }
+      }
+
+     }
+   }
+
+
+ }
+
+ .question-dots {
+   margin-top: func.PXToREM(27px)+rem;
+   margin-bottom: func.PXToREM(40px)+rem;
+ }
+
+ .modal-footer {
+   display: flex;
+   justify-content: space-between;
+   flex-wrap: nowrap;
+   gap: func.PXToREM(40px)+rem;
+
+   button {
+     // height:func.PXToREM(56px)+rem;
+     padding: func.PXToREM(11px)+rem 0px;
+     width: 50%;
+     border-radius: func.PXToREM(100px)+rem;
+     font-size: func.PXToREM(24px)+rem;
+     font-weight: 500;
+     border: 2px solid var.$main-color;
+
+     &.back {
+       background-color: #fff;
+       color: var.$main-color;
+     }
+
+     &.next {
+       background-color: #1D1B201F;
+       color: #000;
+       border-color: transparent;
+
+
+     }
+   }
+ }

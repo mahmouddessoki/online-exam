@@ -1,0 +1,15 @@
+<div class="exam-container">
+  <div class="exam-header">
+    <h3>{{subjName}}</h3>
+  </div>
+  <div class="exam-list">
+    @for (exam of exams; track exam._id) {
+
+      <app-exam-card [exam]="exam" />
+    }@empty {
+      <div class="placeholder  w-100 mb-3" ></div>
+      <div class="placeholder  w-100 mb-3" ></div>
+      <div class="placeholder  w-100" ></div>
+    }
+  </div>
+</div>

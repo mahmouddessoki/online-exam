@@ -1,4 +1,3 @@
-import { isPlatformBrowser } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { catchError, map, Observable, throwError } from 'rxjs';
@@ -19,9 +18,9 @@ import { BASE_URL } from './url.injection';
   providedIn: 'root'
 })
 export class AuthApiService implements AuthAPI {
-  private readonly platform_id = inject(PLATFORM_ID)
   private readonly base_url = inject(BASE_URL)
-  constructor(private httpClient: HttpClient, private authAPIAdaptorService: AuthAPIAdaptorService) { }
+  constructor(private httpClient: HttpClient,
+    private authAPIAdaptorService: AuthAPIAdaptorService) { }
   login(data: LoginData): Observable<authRes> {
     return this.httpClient.post(`${this.base_url}${AuthEndPoint.LOGIN}`, data).pipe(
       map((res: any) => this.authAPIAdaptorService.adapt(res))
@@ -55,5 +54,5 @@ export class AuthApiService implements AuthAPI {
 
   }
 
- 
+
 }

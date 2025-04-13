@@ -1,0 +1,23 @@
+@use "../../../../../styles/scss/functions" as func;
+@use "../../../../../styles/scss/variables" as var;
+
+button {
+  padding: func.PXToREM(8px)+rem func.PXToREM(20px)+rem;
+  border-radius: func.PXToREM(20px)+rem;
+  color: white !important;
+  background-color: var.$main-color !important;
+
+}
+h4 {
+    font-weight: 500;
+    font-size: func.PXToREM(24px)+rem;
+    text-transform: capitalize;
+}
+.modal-body {
+  margin-bottom: func.PXToREM(40px)+rem;
+  margin-top: func.PXToREM(16px)+rem;
+}
+
+ul{
+  list-style-position: outside;
+}

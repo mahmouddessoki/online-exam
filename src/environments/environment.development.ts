@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  API_URL: 'https://exam.elevateegy.com/api/v1/auth/',
+  API_URL: 'https://exam.elevateegy.com/api/v1/',
 };

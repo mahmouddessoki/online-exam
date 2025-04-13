@@ -1,0 +1,45 @@
+<div class="modal-header p-0 border-bottom-0 flex-column">
+  <div class="d-flex w-100 justify-content-between align-items-center">
+    <h4 class="modal-title p-0">
+      Questions {{currentQuestion}} of {{totalQuestions}}
+    </h4>
+    <div class="time">
+      <i class="fa-solid fa-stopwatch me-1"></i>
+      <span>{{duration}}</span>
+    </div>
+  </div>
+
+  <div class="question-dots d-flex w-100 flex-nowrap justify-content-evenly">
+    @for (question of questions; track question._id) {
+      <span [class]="$index==0?'active':''"></span>
+    }
+  </div>
+
+</div>
+<div class="modal-body border-bottom-0 p-0">
+  @for (question of questions; track question._id) {
+  @if ($index==0) {
+  <div class="question-container">
+    <p>
+      {{question.question}}
+    </p>
+    <ul class="list-unstyled">
+      @for (ans of question.answers; track ans.key) {
+      <li>
+        <label [for]="ans.key" [class]="inp.checked?'active':''" (click)="choosed()" class="d-flex align-items-center gap-2">
+          <input #inp [id]="ans.key" [type]="question.type=='single_choice'?'radio':'checkbox'" name="ans" id="">
+          {{ans.answer}}
+        </label>
+      </li>
+      }
+    </ul>
+  </div>
+  }
+
+  }
+
+</div>
+<div class="modal-footer border-0 p-0">
+  <button type="button" class="btn back btn-outline-secondary text-capitalize">back</button>
+  <button type="button" class="btn next btn-outline-secondary text-capitalize">next</button>
+</div>

@@ -3,14 +3,14 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AuthApiService } from 'auth-api';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { saveUserData } from '../../../../store/actions/auth.actions';
+import { FormBtnComponent } from "../../../layouts/auth-layout/components/form-btn/form-btn.component";
+import { ResponseMsgComponent } from "../../../layouts/auth-layout/components/response-msg/response-msg.component";
 import { InputAlertDirective } from '../../directives/input-alert.directive';
 import { globalValidator } from '../../helpers/global-validators';
-import { ValidationMessagesComponent } from '../validation-messages/validation-messages.component';
-import { ResponseMsgComponent } from "../../../layouts/auth-layout/components/response-msg/response-msg.component";
-import { FormBtnComponent } from "../../../layouts/auth-layout/components/form-btn/form-btn.component";
 import { AuthService } from '../../services/auth.service';
+import { ValidationMessagesComponent } from '../validation-messages/validation-messages.component';
 
 @Component({
   selector: 'app-login',
@@ -68,7 +68,7 @@ export class LoginComponent {
         }))
 
         setTimeout(() => {
-          this.router.navigate(['/home']);
+          this.router.navigate(['/dashboard']);
         }, 1500)
       },
       error: (err) => {

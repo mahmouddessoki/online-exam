@@ -1,0 +1,13 @@
+@use "../../../../../styles/scss/functions" as func;
+@use "../../../../../styles/scss/variables" as var;
+
+.exam-container {
+  margin-top: func.PXToREM(40px)+rem;
+  .exam-header,.exam-card {
+      margin-bottom: func.PXToREM(24px)+rem;
+  }
+  .placeholder {
+    height: func.PXToREM(103px)+rem;
+    border-radius: 20px;
+  }
+}

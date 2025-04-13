@@ -1,0 +1,33 @@
+@use "../../../../../styles/scss/functions" as func;
+@use "../../../../../styles/scss/variables" as var;
+.quiz-container {
+  margin-top: func.PXToREM(40px)+rem;
+  padding: func.PXToREM(32px)+rem func.PXToREM(16px)+rem;
+  border-radius: func.PXToREM(20px)+rem;
+  box-shadow: 0px 15px 40px 0px #0000001A;
+
+  header {
+
+    h3,
+    a {
+      font-weight: normal;
+      font-size: func.PXToREM(24px)+rem;
+      line-height: 100%;
+      text-transform: capitalize;
+      color: var.$main-color;
+    }
+  }
+
+  .quiz-list {
+    .row {
+      margin-top: func.PXToREM(24px)+rem;
+      row-gap: func.PXToREM(24px)+rem;
+    }
+    .placeholder {
+      height: 200px;
+      border-radius: func.PXToREM(8.44px)+rem;
+    }
+
+
+  }
+}

@@ -16,12 +16,12 @@ export class AuthService {
   }
   saveUserToken(token: string) {
     if (typeof localStorage !== 'undefined') {
-      localStorage.setItem('token', token);
+      localStorage.setItem('examToken', token);
     }
   }
   removeToken(): void {
     if (typeof localStorage !== 'undefined') {
-      localStorage.removeItem('token');
+      localStorage.removeItem('examToken');
     }
   }
   getUserEmail(): string | null {

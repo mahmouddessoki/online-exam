@@ -4,13 +4,14 @@ import { LoginComponent } from './core/authentication/components/login/login.com
 import { RegisterComponent } from './core/authentication/components/register/register.component';
 import { AuthLayoutComponent } from './core/layouts/auth-layout/auth-layout.component';
 import { UserLayoutComponent } from './core/layouts/user-layout/user-layout.component';
-import { HomeComponent } from './features/components/home/home.component';
 import { authGuard } from './core/guards/auth.guard';
 import { userGuard } from './core/guards/user.guard';
+import { DashboardComponent } from './features/dashboard/components/dashboard/dashboard.component';
+import { ExamListComponent } from './features/exams/components/exam-list/exam-list.component';
 
 export const routes: Routes = [
   {
-    path: '', component: AuthLayoutComponent, canActivate:[authGuard] ,
+    path: '', component: AuthLayoutComponent, canActivate: [authGuard],
     children: [
       { path: 'login', component: LoginComponent, title: 'Login' },
       { path: 'register', component: RegisterComponent, title: 'Register' },
@@ -19,9 +20,10 @@ export const routes: Routes = [
     ]
   },
   {
-    path: '', component: UserLayoutComponent,canActivate:[userGuard],
+    path: '', component: UserLayoutComponent, canActivate: [userGuard],
     children: [
-      {path:'home',component:HomeComponent,title:"home"}
+      { path: 'dashboard', component: DashboardComponent, title: "home" },
+      { path: 'exams/:name/:id', component: ExamListComponent, title: "exams" }
     ]
   }
 ];

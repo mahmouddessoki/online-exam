@@ -1,0 +1,24 @@
+<div class="quiz-container bg-white">
+  <header class="d-flex justify-content-between align-items-center">
+    <h3>quizes</h3>
+    <a (click)="getAll()" class="text-decoration-none">view all</a>
+  </header>
+  <div class="quiz-list">
+    <div class="row">
+      @for (subject of subjects; track subject._id) {
+
+      <div class="col-lg-4 col-md-6 col-12" [routerLink]="['/exams',subject.name,subject._id]" >
+        <app-quize-card [subj]="subject" />
+      </div>
+      }@empty {
+        @for (item of placeholders; track $index) {
+
+          <div class="col-lg-4 col-md-6 col-12">
+            <div class="placeholder placeholder-wave w-100"></div>
+          </div>
+        }
+
+      }
+    </div>
+  </div>
+</div>

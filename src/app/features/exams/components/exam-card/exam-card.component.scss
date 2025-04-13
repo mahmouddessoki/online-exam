@@ -1,0 +1,31 @@
+ @use "../../../../../styles/scss/functions" as func;
+ @use "../../../../../styles/scss/variables" as var;
+
+ .exam-card {
+   height: func.PXToREM(103px)+rem;
+   gap: 24px;
+   border-radius: 10px;
+   padding: func.PXToREM(16px)+rem func.PXToREM(24px)+rem;
+   box-shadow: 0px 15px 40px 0px #2A29290D;
+
+   .exam-info {
+     span {
+       font-size: func.PXToREM(13px)+rem;
+       line-height: 100%;
+       text-align: center;
+     }
+   }
+
+   .duration {
+     margin-bottom: 8px;
+   }
+
+   button {
+     border-radius: 10px;
+     padding: 4px 24px;
+     background-color: var.$main-color;
+     color: white;
+     border: 0;
+     text-transform: capitalize;
+   }
+ }

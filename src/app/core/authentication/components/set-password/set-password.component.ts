@@ -16,7 +16,6 @@ import { saveUserData } from '../../../../store/actions/auth.actions';
 @Component({
   selector: 'app-set-password',
   imports: [
-    RouterLink,
     ReactiveFormsModule,
     ValidationMessagesComponent,
     InputAlertDirective,
@@ -71,7 +70,7 @@ export class SetPasswordComponent {
           }
         }))
         setTimeout(() => {
-          this.router.navigate(['/home']);
+          this.router.navigate(['/dashboard']);
           this.authService.steps.set(0)
         }, 1500)
 

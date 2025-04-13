@@ -1,0 +1,13 @@
+<div class="exam-card bg-white d-flex align-items-center justify-content-between">
+  <div class="d-flex gap-3 align-items-center">
+    <img src="/assets/imgs/Group.png" alt="">
+    <div class="exam-info">
+      <h4 class="text-uppercase mb-0">{{exam().title}}</h4>
+      <span class="text-muted text-capitalize">{{exam().numberOfQuestions}} questions</span>
+    </div>
+  </div>
+  <div>
+    <p class="duration">{{exam().duration}} minutes</p>
+    <button (click)="openInstModal()">start</button>
+  </div>
+</div>

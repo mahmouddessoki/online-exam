@@ -1,1 +1,70 @@
-<p>user-layout works!</p>
+<div id="dashboard" class="py-5 px-3">
+
+  <div class="container-fluid">
+    <div class="row justify-content-between align-items-baseline">
+      <div class="col-xl-2">
+        <aside>
+          <div class="aside-img d-flex justify-content-between align-items-center">
+            <img src="/assets/imgs/Final Logo 1.png" alt="">
+
+            <div class="user-photo d-xl-none d-block">
+              <img src="/assets/imgs/Frame 40.png" alt="">
+            </div>
+          </div>
+          <ul class="aside-nav list-unstyled d-xl-block d-flex justify-content-around flex-md-row flex-column">
+            <li>
+              <a routerLink="/dashboard" class="flex-xl-row flex-column" routerLinkActive="active">
+                <i class="fa-solid fa-list"></i>
+                <span>Dashboard</span>
+              </a>
+            </li>
+            <li>
+              <a routerLink="/quiz" class="flex-xl-row flex-column">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <span>quiz history</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="flex-xl-row flex-column">
+                <i class="fa-solid logout fa-arrow-right-from-bracket"></i>
+                <span>logout</span>
+              </a>
+            </li>
+          </ul>
+        </aside>
+      </div>
+
+      <div class="col-xl-9">
+
+        <section id="content">
+          <div class="searchForm d-flex justify-content-center">
+            <form class="d-flex flex-grow-1 justify-content-center">
+              <div class="flex-grow-1">
+                <div class="position-relative">
+
+                  <input type="text" class="form-control" placeholder="Search quiz">
+                  <i class="fa-solid search fa-magnifying-glass position-absolute"></i>
+                </div>
+
+              </div>
+              <div>
+                <div class="form-btn">
+
+                  <button type="submit"> start quiz </button>
+                </div>
+
+              </div>
+            </form>
+            <div class="user-photo d-xl-block d-none">
+              <img src="/assets/imgs/Frame 40.png" alt="">
+            </div>
+          </div>
+          <router-outlet></router-outlet>
+
+
+
+        </section>
+      </div>
+    </div>
+  </div>
+</div>

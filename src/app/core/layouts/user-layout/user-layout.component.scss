@@ -1,0 +1,186 @@
+@use "../../../../styles/scss/functions" as func;
+@use "../../../../styles/scss/variables" as var;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+#dashboard {
+  & {
+    font-family: var.$main-font;
+    background-color: #EDEDED;
+    min-height: 100vh;
+  }
+
+  .aside-img {
+    margin-bottom: func.PXToREM(56px)+rem;
+
+  }
+
+  .aside-nav {
+
+    li {
+      a {
+        & {
+          font-size: func.PXToREM(20px)+rem;
+          font-weight: 600;
+          line-height: 100%;
+          display: flex;
+          align-items: center;
+          gap: func.PXToREM(30px)+rem;
+          margin-bottom: func.PXToREM(32px)+rem;
+          padding: func.PXToREM(12px)+rem func.PXToREM(8px)+rem;
+          border-radius: 4px;
+          text-decoration: none;
+          color: #696F79;
+          text-transform: capitalize;
+        }
+
+        &.active {
+          background-color: var.$main-color;
+
+          * {
+            color: #fff;
+          }
+
+        }
+      }
+
+
+
+    }
+
+
+
+    i {
+      color: var.$main-color;
+
+      &.logout {
+        transform: rotateY(180deg);
+      }
+    }
+  }
+
+
+  #content {
+    max-width: func.PXToREM(1063px)+rem;
+
+    .searchForm {
+      gap: func.PXToREM(24px)+rem;
+
+      input {
+        padding: func.PXToREM(16px)+rem;
+        padding-left: func.PXToREM(50px)+rem;
+        border-radius: func.PXToREM(20px)+rem;
+        text-transform: capitalize;
+        color: #696F79;
+        width: func.PXToREM(762px)+rem;
+
+      }
+
+      .search {
+        top: func.PXToREM(18px)+rem;
+        bottom: func.PXToREM(18px)+rem;
+        left: func.PXToREM(16px)+rem;
+        font-size: func.PXToREM(19px)+rem;
+        display: flex;
+        align-items: center;
+      }
+
+
+
+      .search,
+      input,
+      button {
+        font-size: func.PXToREM(19px)+rem;
+        text-transform: capitalize;
+      }
+
+      .form-btn {
+        width: fit-content;
+      }
+
+      button {
+        background-color: var.$main-color;
+        color: #fff;
+        width: func.PXToREM(191px)+rem;
+        height: func.PXToREM(61px)+rem;
+        border-radius: func.PXToREM(20px)+rem;
+        padding: func.PXToREM(16px)+rem func.PXToREM(32px)+rem;
+        border: 0;
+
+      }
+
+      form {
+        gap: func.PXToREM(24px)+rem;
+
+      }
+    }
+
+    input {
+      box-shadow: 0px 15px 40px 0px #0000001A;
+    }
+
+
+  }
+
+
+}
+
+
+.user-photo {
+  width: fit-content;
+
+  img {
+    box-shadow: 0px 15px 40px 5px #EDEDED;
+    border-radius: 50%;
+    width: 61px;
+    height: 61px;
+  }
+}
+
+@layer responsive {
+
+  @media all and (max-width: 991px) {
+
+    #content {
+
+      .searchForm {
+        input {
+          width: 100% !important;
+        }
+      }
+
+      button {
+        width: 100% !important;
+      }
+    }
+
+
+  }
+  @media all and (max-width: 1199px) {
+
+    #dashboard {
+
+      #content {
+        & {
+            max-width: 100% !important;
+          }
+      }
+    }
+
+
+  }
+
+    @media all and (max-width: 1400px) {
+
+      #content {
+        .searchForm {
+          input {
+            width: 100% !important;
+          }
+        }
+
+
+      }
+
+
+    }
+}

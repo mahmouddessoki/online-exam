@@ -1,0 +1,27 @@
+@use "../../../../../styles/scss/functions" as func;
+@use "../../../../../styles/scss/variables" as var;
+.quiz-card {
+  .quiz-overlay {
+    left: func.PXToREM(27px)+rem;
+    right: func.PXToREM(27px)+rem;
+    bottom: func.PXToREM(27px)+rem;
+    color: white;
+    border-radius: func.PXToREM(8.44px)+rem;
+    padding: func.PXToREM(15px)+rem;
+    text-transform: capitalize;
+    background: rgba(25, 53, 202, 0.5);
+
+    h4 {
+      font-weight: 700;
+      font-size: func.PXToREM(13.51px)+rem;
+      line-height: 100%;
+      margin-bottom: 0;
+    }
+
+    span {
+      font-weight: 500;
+      font-size: func.PXToREM(11.82px)+rem;
+      ;
+    }
+  }
+}
