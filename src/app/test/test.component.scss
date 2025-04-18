@@ -1,0 +1,37 @@
+ul.second-list li {
+  animation: add 1s linear 1 forwards;
+  transition: 1s;
+}
+
+.hide {
+  animation: remove 1s linear 1 forwards !important;
+}
+
+
+@keyframes add {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+
+  }
+
+}
+
+@keyframes remove {
+  0% {
+    opacity: 1;
+    transform: translateX(0px);
+
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+}

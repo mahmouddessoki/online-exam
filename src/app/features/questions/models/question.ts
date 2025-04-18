@@ -31,3 +31,6 @@ export interface Exam {
   createdAt: string
 }
 
+export interface answers {
+  [questionId: string]: string | string[]
+}

@@ -8,6 +8,7 @@ import { authGuard } from './core/guards/auth.guard';
 import { userGuard } from './core/guards/user.guard';
 import { DashboardComponent } from './features/dashboard/components/dashboard/dashboard.component';
 import { ExamListComponent } from './features/exams/components/exam-list/exam-list.component';
+import { TestComponent } from './test/test.component';
 
 export const routes: Routes = [
   {
@@ -23,6 +24,7 @@ export const routes: Routes = [
     path: '', component: UserLayoutComponent, canActivate: [userGuard],
     children: [
       { path: 'dashboard', component: DashboardComponent, title: "home" },
+      { path: 'test', component: TestComponent, title: "home" },
       { path: 'exams/:name/:id', component: ExamListComponent, title: "exams" }
     ]
   }

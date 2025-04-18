@@ -15,19 +15,21 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 // Import library module
 import { NgxSpinnerModule } from "ngx-spinner";
 import { loaderInterceptor } from './core/interceptors/loader.interceptor';
+import { answersReducer } from './store/reducers/ansewers.reducer';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes, withHashLocation()),
     provideClientHydration(withEventReplay()),
     provideHttpClient(withFetch(),
-    withInterceptors([tokenAddInterceptor,loaderInterceptor])),
+      withInterceptors([tokenAddInterceptor, loaderInterceptor])),
     { provide: BASE_URL, useValue: environment.API_URL },
     provideStore({
       auth: authReducer,
+      answers: answersReducer
     }), provideEffects([authEffects]),
     importProvidersFrom(
-      BrowserAnimationsModule,
+  BrowserAnimationsModule,
       NgxSpinnerModule,
     )
 

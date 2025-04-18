@@ -29,7 +29,6 @@ export class QuizListComponent {
         console.log(this.subjects);
       },
       error: (error) => {
-        console.error(error);
       }
     })
 

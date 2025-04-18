@@ -1,0 +1,37 @@
+ @use "../../../../../styles/scss/functions" as func;
+ @use "../../../../../styles/scss/variables" as var;
+
+.question-container {
+  p {
+    font-size: func.PXToREM(24px)+rem;
+    margin-bottom: func.PXToREM(24px)+rem !important;
+    color: #0F0F0F;
+  }
+
+  ul {
+    margin-bottom: func.PXToREM(40px)+rem;
+
+    li {
+      label {
+
+
+        font-size: func.PXToREM(15px)+rem;
+        background-color: #EDEFF3;
+        padding: func.PXToREM(16px)+rem func.PXToREM(8px)+rem;
+        margin-bottom: func.PXToREM(16px)+rem;
+        border-radius: func.PXToREM(10px)+rem;
+        width: 100%;
+
+        &.active {
+          background-color: #CCD7EB;
+          input {
+            accent-color: var.$main-color !important;
+          }
+        }
+      }
+
+    }
+  }
+
+
+}

@@ -1,0 +1,28 @@
+<p>Animation</p>
+<button class="btn btn-danger" (click)="changeState()">animate</button>
+<button class="btn btn-danger" (click)="onShrink()">Shrink</button>
+
+
+<div [@extraStat]="extraState"  style="width: 100px;height: 100px;background-color: red;margin: 15px 0px;" ></div>
+<div [@divStat]="state" style="width: 100px;height: 100px;background-color: red;" ></div>
+
+
+
+<input type="text" #inp>
+<button class="btn btn-info" (click)="addItem(inp.value)">add</button>
+<ul class="list-group w-50" >
+
+  @for (item of items; track $index) {
+    <li [@list] class="list-group-item" (click)="removeItem(item)" >{{item}}</li>
+  }
+
+</ul>
+<input type="text" #inp2>
+<button class="btn btn-info" (click)="add(inp2.value)">add</button>
+<ul class="list-group w-50 second-list" >
+
+  @for (item of items2; track $index) {
+    <li #itemRef class="list-group-item" (click)="remove(item,itemRef)" >{{item}}</li>
+  }
+
+</ul>

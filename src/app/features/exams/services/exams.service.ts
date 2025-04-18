@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ExamsService {
-
+  
   constructor(private http : HttpClient) { }
 
   getExams(id:string) : Observable<any> {

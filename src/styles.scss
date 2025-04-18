@@ -165,7 +165,7 @@
 
 
 .modal {
-  background: rgba(0, 0, 0, 0.5) !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
   box-shadow: 0px 1px 10px 0px #00000040;
   .modal-content {
     border-radius: 20px;
@@ -173,13 +173,11 @@
   }
 }
 
-
-// html {
-//   font-size: 14px;
-// }
 @media all and (max-width: 1314px) {
   html {
     font-size: 13px !important;
   }
 }
+
+
 

@@ -1,0 +1,36 @@
+<div class="modal-header p-0 border-bottom-0 flex-column">
+  <div class="d-flex w-100 justify-content-between align-items-center">
+    <h4 class="modal-title p-0">
+      Your Score
+    </h4>
+  </div>
+</div>
+<div class="modal-body border-bottom-0 p-0">
+  <div class="d-flex justify-content-around align-items-center">
+    <div class="chart-wrapper">
+      <ngx-charts-pie-chart [view]="[200, 200]" [customColors]="customColors" [results]="data" [doughnut]="true" [legend]="false" [labels]="false"
+        [animations]="true" [arcWidth]="0.2">
+      </ngx-charts-pie-chart>
+      <div class="center-text">
+        {{ percentage }}%
+      </div>
+    </div>
+    <div class="statistics d-flex flex-column align-items-center justify-content-center">
+      <div class="correct d-flex w-100 justify-content-between align-items-center gap-3 text-capitalize">
+        <h5>Correct</h5>
+        <span>{{correctAns}}</span>
+      </div>
+      <div class="incorrect d-flex w-100  justify-content-between align-items-center gap-3 text-capitalize">
+        <h5>incorrect</h5>
+        <span>{{inCorrectAns}}</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-footer border-0 p-0">
+  <button type="button" (click)="closeModal()"  class="btn back btn-outline-secondary text-capitalize">back</button>
+  <button type="button"   class="btn results btn-outline-secondary text-capitalize"  >Show Results</button>
+</div>
+
+
+

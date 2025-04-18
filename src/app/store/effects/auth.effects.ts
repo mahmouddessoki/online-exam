@@ -10,7 +10,6 @@ export class authEffects {
     () => this.actions.pipe(
       ofType(saveUserData),
       tap((action) => {
-        console.log(action);
         if (action.user && action.user.token) {
           localStorage.setItem("examToken", action.user.token);
         }
