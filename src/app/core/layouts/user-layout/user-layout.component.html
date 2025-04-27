@@ -1,17 +1,61 @@
-<div id="dashboard" class="py-5 px-3">
+<nav class="navbar  navbar-expand-lg d-flex d-lg-none fixed-top bg-body-tertiary">
+  <div class="container-fluid gap-3">
+    <a class="navbar-brand order-2" href="#">
+      <img src="/assets/imgs/Frame 40.png" alt="">
+    </a>
+    <button class="navbar-toggler border-0 order-1" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <!-- <span class="navbar-toggler-icon"></span> -->
+      <span class="material-symbols-outlined text-white">
+        menu
+      </span>
+    </button>
+    <div #collapse  class="collapse bg-white px-2 rounded-2 shadow py-4 navbar-collapse order-3" id="navbarSupportedContent">
+      <div class="d-flex justify-content-between mb-3 align-items-center">
+        <img src="/assets/imgs/Final Logo 1.png" alt="">
+        <span (click)="hideNav()" class="material-symbols-outlined text-black">
+          close
+        </span>
+      </div>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 aside-nav">
+        <li class="nav-item mb-3">
+          <a routerLink="/dashboard" routerLinkActive="active mb-0">
+            <i class="fa-solid fa-list"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item mb-3">
+          <a routerLink="/quiz" class="mb-0">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <span>quiz history</span>
+          </a>
+        </li>
 
+        <li class="nav-item mb-3">
+          <a (click)="logout()" class="mb-0">
+            <i class="fa-solid logout fa-arrow-right-from-bracket"></i>
+            <span>logout</span>
+          </a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+<div id="dashboard" class="py-5 px-3">
   <div class="container-fluid">
     <div class="row justify-content-between align-items-baseline">
       <div class="col-xl-2">
         <aside>
-          <div class="aside-img d-flex justify-content-between align-items-center">
+          <div class="aside-img d-lg-flex d-none justify-content-between align-items-center">
             <img src="/assets/imgs/Final Logo 1.png" alt="">
 
             <div class="user-photo d-xl-none d-block">
               <img src="/assets/imgs/Frame 40.png" alt="">
             </div>
           </div>
-          <ul class="aside-nav list-unstyled d-xl-block d-flex justify-content-around flex-md-row flex-column">
+          <ul class="aside-nav list-unstyled d-xl-block d-lg-flex d-none justify-content-around flex-nowrap">
             <li>
               <a routerLink="/dashboard" class="flex-xl-row flex-column" routerLinkActive="active">
                 <i class="fa-solid fa-list"></i>
@@ -36,7 +80,7 @@
 
       <div class="col-xl-9">
 
-        <section id="content">
+        <section id="content" class="mt-5">
           <div class="searchForm d-flex justify-content-center">
             <form class="d-flex flex-grow-1 justify-content-center">
               <div class="flex-grow-1">
@@ -60,9 +104,6 @@
             </div>
           </div>
           <router-outlet></router-outlet>
-
-
-
         </section>
       </div>
     </div>

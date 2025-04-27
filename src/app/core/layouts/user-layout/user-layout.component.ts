@@ -1,5 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component, inject, PLATFORM_ID } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, inject, PLATFORM_ID, ViewChild, viewChild } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
@@ -8,10 +8,11 @@ import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/rou
   templateUrl: './user-layout.component.html',
   styleUrl: './user-layout.component.scss'
 })
-export class UserLayoutComponent {
+export class UserLayoutComponent implements AfterViewInit {
 
   private readonly platformId = inject(PLATFORM_ID)
   private readonly router = inject(Router)
+  @ViewChild("collapse") collapsed!:ElementRef
 
   logout(){
     if(isPlatformBrowser(this.platformId)) {
@@ -19,6 +20,16 @@ export class UserLayoutComponent {
       this.router.navigate(['/login']);
     }
   }
+
+
+  ngAfterViewInit(): void {
+    
+  }
+
+  hideNav(){
+    this.collapsed.nativeElement.classList.remove("show")
+  }
+
 
 
 }

@@ -14,50 +14,7 @@
 
   }
 
-  .aside-nav {
 
-    li {
-      a {
-        & {
-          font-size: func.PXToREM(20px)+rem;
-          font-weight: 600;
-          line-height: 100%;
-          display: flex;
-          align-items: center;
-          gap: func.PXToREM(30px)+rem;
-          margin-bottom: func.PXToREM(32px)+rem;
-          padding: func.PXToREM(12px)+rem func.PXToREM(8px)+rem;
-          border-radius: 4px;
-          text-decoration: none;
-          color: #696F79;
-          text-transform: capitalize;
-          cursor: pointer;
-        }
-
-        &.active {
-          background-color: var.$main-color;
-
-          * {
-            color: #fff;
-          }
-
-        }
-      }
-
-
-
-    }
-
-
-
-    i {
-      color: var.$main-color;
-
-      &.logout {
-        transform: rotateY(180deg);
-      }
-    }
-  }
 
 
   #content {
@@ -125,6 +82,51 @@
 
 }
 
+.aside-nav {
+
+  li {
+    a {
+      & {
+        font-size: func.PXToREM(20px)+rem;
+        font-weight: 600;
+        line-height: 100%;
+        display: flex;
+        align-items: center;
+        gap: func.PXToREM(30px)+rem;
+        margin-bottom: func.PXToREM(32px)+rem;
+        padding: func.PXToREM(12px)+rem func.PXToREM(8px)+rem;
+        border-radius: 4px;
+        text-decoration: none;
+        color: #696F79;
+        text-transform: capitalize;
+        cursor: pointer;
+      }
+
+      &.active {
+        background-color: var.$main-color;
+
+        * {
+          color: #fff;
+        }
+
+      }
+    }
+
+
+
+  }
+
+
+
+  i {
+    color: var.$main-color;
+
+    &.logout {
+      transform: rotateY(180deg);
+    }
+  }
+}
+
 
 .user-photo {
   width: fit-content;
@@ -136,6 +138,40 @@
     height: 61px;
   }
 }
+
+nav {
+  background-color: var.$main-color !important;
+  padding: func.PXToREM(16px)+rem;
+
+  .navbar-brand {
+    img {
+      width: func.PXToREM(40px)+rem;
+      height: func.PXToREM(40px)+rem;
+      border-radius: 50%;
+    }
+  }
+
+  .navbar-toggler:focus {
+    box-shadow: none;
+  }
+
+    img{
+      width: func.PXToREM(80px)+rem;
+    }
+  }
+
+
+.material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+
+    cursor: pointer;
+}
+
+
 
 @layer responsive {
 
@@ -155,33 +191,37 @@
     }
 
 
+
+
   }
+
   @media all and (max-width: 1199px) {
 
     #dashboard {
 
       #content {
         & {
-            max-width: 100% !important;
-          }
+          max-width: 100% !important;
+        }
       }
     }
 
 
   }
 
-    @media all and (max-width: 1400px) {
+  @media all and (max-width: 1400px) {
 
-      #content {
-        .searchForm {
-          input {
-            width: 100% !important;
-          }
+    #content {
+      .searchForm {
+        input {
+          width: 100% !important;
         }
-
-
       }
 
 
     }
+
+
+  }
+
 }

@@ -38,7 +38,6 @@ export class ExamListComponent {
         this.exams=res.exams;
       },
       error: (err) => {
-        console.error(err);
       }
     })
   }

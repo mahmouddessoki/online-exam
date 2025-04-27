@@ -1,0 +1,16 @@
+<div class="summary-container">
+
+      @for (sum of summary; track $index) {
+
+        <div class="question shadow">
+          <app-question-card [summary]="true" [question]="sum.question" [choice]="summary[0].choice" />
+        </div>
+
+    }
+
+
+
+  </div>
+  <div class="py-4">
+    <button (click)="closeModal()">close</button>
+  </div>

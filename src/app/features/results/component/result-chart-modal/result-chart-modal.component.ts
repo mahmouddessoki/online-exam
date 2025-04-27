@@ -1,6 +1,7 @@
 import { Component, inject, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { QuestionsService } from '../../../questions/services/questions.service';
 
 @Component({
   selector: 'app-result-chart-modal',
@@ -10,6 +11,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 })
 export class ResultChartModalComponent {
   private readonly ngbModal = inject(NgbActiveModal)
+  private readonly qService = inject(QuestionsService)
+  // private readonly ngModal = inject(ngb)
   @Input() correctAns!: number;
   @Input() inCorrectAns!: number;
   data:{name:string,value:number}[]=[];
@@ -37,6 +40,12 @@ export class ResultChartModalComponent {
   closeModal() {
     this.ngbModal.close("closeModal")
   }
+  showResults(){
+    this.ngbModal.dismiss("summary")
+  }
+
+
+
 
 
 }

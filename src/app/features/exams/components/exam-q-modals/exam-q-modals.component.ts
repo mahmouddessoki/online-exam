@@ -6,10 +6,16 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import { answersSelector } from '../../../../store/selectors/answers.selector';
 import { ResultChartModalComponent } from '../../../results/component/result-chart-modal/result-chart-modal.component';
+import { Subscription } from 'rxjs';
+import { AnswerInterface, checkInterface } from '../../../questions/models/check.interface';
+import { SummaryInterface } from '../../models/summary-interface';
+import { SummaryComponent } from '../summary/summary.component';
+import { CountdownComponent } from "../../../../shared/components/ui/countdown/countdown.component";
+
 
 @Component({
   selector: 'app-exam-q-modals',
-  imports: [QuestionCardComponent],
+  imports: [QuestionCardComponent, CountdownComponent],
   templateUrl: './exam-q-modals.component.html',
   styleUrl: './exam-q-modals.component.scss'
 })
@@ -17,17 +23,22 @@ export class ExamQModalsComponent implements OnInit {
   private readonly ngbModal = inject(NgbActiveModal)
   private modalService = inject(NgbModal);
   private readonly store = inject(Store)
-  @Input({ required: true }) examId!: string;
-  @Input({ required: true }) duration!: string;
-  isChoosed: boolean = false;
   private readonly questionsService = inject(QuestionsService)
+  @Input({ required: true }) examId!: string;
+  @Input({ required: true }) duration!: number;
+  isChoosed: boolean = false;
   questions: Question[] = [];
   questionsCopy: Question[] = [];
   currentQuestion: WritableSignal<number> = signal<number>(0);
   totalQuestions!: number;
   selectedAnswers: answers = {}
   correctAns: number = 0;
-  wrongAnswers: number = 0
+  wrongAnswers: number = 0;
+  subscription: Subscription = new Subscription();
+  answersCheck: checkInterface = {} as checkInterface;
+  answers: AnswerInterface[] = [];
+  summary: SummaryInterface[] = [];
+
   ngOnInit(): void {
     this.getQuestions()
 
@@ -37,6 +48,7 @@ export class ExamQModalsComponent implements OnInit {
     this.store.select(answersSelector).subscribe({
       next: (ans) => {
         this.selectedAnswers = ans
+        console.log(this.selectedAnswers);
       }
     })
   }
@@ -57,7 +69,6 @@ export class ExamQModalsComponent implements OnInit {
         this.getSelectedAns()
       },
       error: (error) => {
-        console.error('Error:', error);
       }
     })
   }
@@ -80,6 +91,7 @@ export class ExamQModalsComponent implements OnInit {
           }
 
         }
+        this.formCheckAns()
         this.ngbModal.close("closeQ")
 
         const modalRef = this.modalService.open(ResultChartModalComponent, {
@@ -89,8 +101,18 @@ export class ExamQModalsComponent implements OnInit {
         })
         modalRef.componentInstance.correctAns = this.correctAns
         modalRef.componentInstance.inCorrectAns = this.wrongAnswers
-
-
+        modalRef.result.then((res) => {
+          console.log("first", res);
+        }, (r) => {
+          if (r == "summary") {
+            const modalReference = this.modalService.open(SummaryComponent, {
+              size: 'lg',
+              centered: true,
+              backdrop: true
+            })
+            modalReference.componentInstance.summary = this.summary
+          }
+        })
       }
     }
 
@@ -109,4 +131,46 @@ export class ExamQModalsComponent implements OnInit {
     }
     return true
   }
+
+  formCheckAns() {
+    let i = 0
+    for (const key of Object.keys(this.selectedAnswers)) {
+      this.answers[i] = {
+        questionId: key,
+        correct: this.selectedAnswers[key] as string
+      }
+      i++;
+    }
+
+    this.checkAnswers()
+  }
+
+  checkAnswers() {
+    for (let i = 0; i < this.questionsCopy.length; i++) {
+      const q = this.questionsCopy[i];
+      if (q._id == this.answers[i].questionId) {
+        this.summary[i] = {
+          choice: this.answers[i].correct,
+          question: q
+        }
+      }
+
+    }
+
+  }
+  isAnswered(){
+    let flag = false
+    for (const answer of Object.keys(this.selectedAnswers)) {
+      if(answer == this.questions[this.currentQuestion()]._id) {
+        flag = true
+        break;
+      }
+    }
+    return flag;
+
+  }
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
 }

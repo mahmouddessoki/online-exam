@@ -12,21 +12,21 @@ import { answers, Question } from '../../models/question';
 export class QuestionCardComponent {
   private readonly store = inject(Store)
   @Input({ required: true }) question: Question = {} as Question;
+  @Input() summary: boolean = false;
+  @Input() choice!: string;
   selectedAnswers: answers = {};
 
   choosed() {
   }
-  ngOnInit(){
-    console.log(this.store);
+  ngOnInit() {
   }
 
-  onAnswerChange(e: Event, q: Question) {
+  onAnswerChange(e: Event) {
     const inp = e.target as HTMLInputElement;
     const isChecked = inp.checked
     const val = inp.value
-
     if (this.question.type == 'single_choice') {
-      this.selectedAnswers[this.question._id] = val
+      this.selectedAnswers[this.question._id] = val;
     } else {
       if (!this.selectedAnswers[this.question._id]) {
         this.selectedAnswers[this.question._id] = [];
@@ -49,6 +49,7 @@ export class QuestionCardComponent {
 
 
   }
+
 
 
 }

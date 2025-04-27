@@ -8,20 +8,23 @@
   <ul class="list-unstyled">
     @for (ans of question.answers; track ans.key) {
     <li>
-      <label [for]="ans.key" class="d-flex align-items-center gap-2"
-      [class]="{
+      <label [for]="ans.key" class="d-flex align-items-center gap-2" [class]="{
           'active':(question.type === 'single_choice' && selectedAnswers[question._id] === ans.key) ||
-            (question.type === 'multiple_choice' && selectedAnswers[question._id]!.includes(ans.key))
-        }">
-        <input [id]="ans.key" [type]="question.type=='single_choice'?'radio':'checkbox'" [name]="question._id"
-          (change)="onAnswerChange($event , question)"
-          [value]="ans.key"
-            [checked]="
-            (question.type === 'single_choice' && selectedAnswers[question._id] == ans.key) ||
-            (question.type !== 'single_choice' && selectedAnswers[question._id]!.includes(ans.key))
-          "
+            (question.type === 'multiple_choice' && selectedAnswers[question._id]!.includes(ans.key)) ,
 
-          >
+          'correct':summary &&
+          (ans.key == choice && (ans.key == question.correct) ||
+        (ans.key == question.correct)),
+          'wrong':summary && (ans.key == choice && (ans.key != question.correct)),
+
+
+        }">
+        <input [disabled]="summary" [id]="ans.key" [type]="question.type=='single_choice'?'radio':'checkbox'"
+          [name]="question._id" (change)="onAnswerChange($event)" [value]="ans.key" [checked]="
+            (question.type === 'single_choice' && selectedAnswers[question._id] == ans.key) ||
+            (question.type !== 'single_choice' && selectedAnswers[question._id]!.includes(ans.key)) ||
+            (ans.key == choice)
+          ">
         {{ans.answer}}
       </label>
     </li>

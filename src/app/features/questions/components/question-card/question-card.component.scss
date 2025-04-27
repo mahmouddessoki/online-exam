@@ -3,7 +3,7 @@
 
 .question-container {
   p {
-    font-size: func.PXToREM(24px)+rem;
+    font-size: func.PXToREM(20px)+rem;
     margin-bottom: func.PXToREM(24px)+rem !important;
     color: #0F0F0F;
   }
@@ -28,10 +28,26 @@
             accent-color: var.$main-color !important;
           }
         }
-      }
+        &.correct {
+          background: #CAF9CC;
+          input:checked {
+            accent-color: #CAF9CC;
+          }
+        }
+        &.wrong {
+          background-color: #CC1010;
+          color: white;
+          input:checked {
+              accent-color: #CC1010;
+            }
+
+        }
+
+
 
     }
   }
 
 
+}
 }
