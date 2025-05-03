@@ -21,12 +21,12 @@ export class QuizListComponent {
   ngOnInit(): void {
     this.getSubjects()
   }
-  getSubjects(limit:number=6) {
+  getSubjects(limit?:number) {
     this.subscription = this.quizService.getSubjects(limit).subscribe({
       next: (data) => {
         this.subjects = data.subjects
-        this.numOfPages = data.numberOfPages
-        console.log(this.subjects);
+        this.numOfPages = data.metadata.numberOfPages
+        console.log(data);
       },
       error: (error) => {
       }

@@ -9,12 +9,15 @@
   header {
 
     h3,
-    a {
+    .view {
       font-weight: normal;
       font-size: func.PXToREM(24px)+rem;
       line-height: 100%;
       text-transform: capitalize;
       color: var.$main-color;
+    }
+    .view {
+      cursor: pointer;
     }
   }
 

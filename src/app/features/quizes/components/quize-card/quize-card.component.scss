@@ -1,6 +1,9 @@
 @use "../../../../../styles/scss/functions" as func;
 @use "../../../../../styles/scss/variables" as var;
 .quiz-card {
+  & {
+    cursor: pointer;
+  }
   .quiz-overlay {
     left: func.PXToREM(27px)+rem;
     right: func.PXToREM(27px)+rem;

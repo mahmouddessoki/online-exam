@@ -38,6 +38,7 @@ export class ExamQModalsComponent implements OnInit {
   answersCheck: checkInterface = {} as checkInterface;
   answers: AnswerInterface[] = [];
   summary: SummaryInterface[] = [];
+  choice : string = ''
 
   ngOnInit(): void {
     this.getQuestions()
@@ -48,7 +49,6 @@ export class ExamQModalsComponent implements OnInit {
     this.store.select(answersSelector).subscribe({
       next: (ans) => {
         this.selectedAnswers = ans
-        console.log(this.selectedAnswers);
       }
     })
   }
@@ -120,6 +120,7 @@ export class ExamQModalsComponent implements OnInit {
   getPrev() {
     if (this.currentQuestion() > 0) {
       this.currentQuestion.update((val) => val - 1);
+     this.choice = this.selectedAnswers[this.questionsCopy[this.currentQuestion()]._id] as string
     } else {
       this.ngbModal.close("closeQ")
     }

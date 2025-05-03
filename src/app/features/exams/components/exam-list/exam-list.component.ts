@@ -14,15 +14,16 @@ export class ExamListComponent {
 
   private readonly activeRoute = inject(ActivatedRoute)
   private readonly examService = inject(ExamsService)
-  subjId!:string;
-  subjName!:string;
-  exams:Exam[] = []
+  subjId!: string;
+  subjName!: string;
+  exams: Exam[] = []
+  emptyExams: boolean = false
 
   ngOnInit(): void {
     this.getSubjId()
   }
 
-  getSubjId(){
+  getSubjId() {
     this.activeRoute.paramMap.subscribe({
       next: (params) => {
         this.subjId = params.get('id')!
@@ -32,12 +33,13 @@ export class ExamListComponent {
     })
   }
 
-  getSubjectExams(){
+  getSubjectExams() {
     this.examService.getExams(this.subjId).subscribe({
       next: (res) => {
-        this.exams=res.exams;
-      },
-      error: (err) => {
+        this.exams = res.exams;
+        if (this.exams.length == 0) {
+          this.emptyExams = true
+        }
       }
     })
   }

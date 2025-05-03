@@ -34,3 +34,9 @@ export interface Exam {
 export interface answers {
   [questionId: string]: string | string[]
 }
+
+export interface examQ {
+  message: string,
+  questions: Question[]
+
+}

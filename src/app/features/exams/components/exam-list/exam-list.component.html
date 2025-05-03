@@ -4,11 +4,17 @@
   </div>
   <div class="exam-list">
     @for (exam of exams; track exam._id) {
-
       <app-exam-card [exam]="exam" />
     }@empty {
+      @if (!emptyExams) {
       <div class="placeholder placeholder-grow  w-100 mb-3" ></div>
       <div class="placeholder placeholder-grow  w-100 mb-3" ></div>
+      }@else {
+        <div class="alert alert-warning text-center text-capitalize fs-4" role="alert">
+          No Exams Available for <span class="fw-bold">{{subjName}}</span>
+        </div>
+
+      }
     }
   </div>
 </div>

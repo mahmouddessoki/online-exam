@@ -1,13 +1,18 @@
+import { isPlatformBrowser } from '@angular/common';
 import { HttpInterceptorFn } from '@angular/common/http';
+import { inject, PLATFORM_ID } from '@angular/core';
 
 export const tokenAddInterceptor: HttpInterceptorFn = (req, next) => {
-  if (typeof localStorage !== 'undefined') {
+  const pid = inject(PLATFORM_ID)
+  if (isPlatformBrowser(pid)) {
     const token = localStorage.getItem('examToken');
-    req = req.clone({
-      setHeaders: {
-        token: `${token}`
-      }
-    });
+    if (token) {
+      req = req.clone({
+        setHeaders: {
+          token: `${token}`
+        }
+      });
+    }
   }
 
   return next(req);

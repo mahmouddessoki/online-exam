@@ -6,7 +6,7 @@
     }
   </p>
   <ul class="list-unstyled">
-    @for (ans of question.answers; track ans.key) {
+    @for (ans of question?.answers; track ans.key) {
     <li>
       <label [for]="ans.key" class="d-flex align-items-center gap-2" [class]="{
           'active':(question.type === 'single_choice' && selectedAnswers[question._id] === ans.key) ||
@@ -20,13 +20,10 @@
 
         }">
         <input [disabled]="summary" [id]="ans.key" [type]="question.type=='single_choice'?'radio':'checkbox'"
-          [name]="question._id" (change)="onAnswerChange($event)" [value]="ans.key" [checked]="
-            (question.type === 'single_choice' && selectedAnswers[question._id] == ans.key) ||
-            (question.type !== 'single_choice' && selectedAnswers[question._id]!.includes(ans.key)) ||
-            (ans.key == choice)
-          ">
+          [name]="question._id" (change)="onAnswerChange($event)" [value]="ans.key" [checked]="setAsAns(ans.key)" >
         {{ans.answer}}
       </label>
+
     </li>
     }
   </ul>

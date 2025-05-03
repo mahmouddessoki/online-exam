@@ -2,10 +2,11 @@ import { Component, inject, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { saveUserAnswers } from '../../../../store/actions/userAns.actions';
 import { answers, Question } from '../../models/question';
+import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-question-card',
-  imports: [],
+  imports: [ReactiveFormsModule,FormsModule],
   templateUrl: './question-card.component.html',
   styleUrl: './question-card.component.scss'
 })
@@ -15,10 +16,12 @@ export class QuestionCardComponent {
   @Input() summary: boolean = false;
   @Input() choice!: string;
   selectedAnswers: answers = {};
+  chh = "x"
 
   choosed() {
   }
   ngOnInit() {
+    console.log(this.choice);
   }
 
   onAnswerChange(e: Event) {
@@ -50,6 +53,14 @@ export class QuestionCardComponent {
 
   }
 
+
+  setAsAns(value:string) {
+    if(this.selectedAnswers[this.question._id] == value) {
+      console.log(value);
+      return true;
+    }
+    return false
+  }
 
 
 }

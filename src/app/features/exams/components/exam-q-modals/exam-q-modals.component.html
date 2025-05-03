@@ -5,10 +5,9 @@
     </h4>
     <div class="time d-flex align-items-center">
 
-      
+
       <i class="fa-solid fa-stopwatch me-1"></i>
       <app-countdown [duration]="duration*60"> </app-countdown>
-      <!-- 5-minute countdown -->
 
 
     </div>
@@ -16,13 +15,13 @@
 
   <div class="question-dots d-flex w-100 flex-nowrap justify-content-evenly">
     @for (question of questions; track question._id) {
-    <span [class]="selectedAnswers[question._id]?'active':''"></span>
+    <span [class]="$index+1 <= currentQuestion()?'active':''"></span>
     }
   </div>
 
 </div>
 <div class="modal-body border-bottom-0 p-0">
-  <app-question-card [question]="questions[currentQuestion()]" />
+  <app-question-card [choice]="choice" [question]="questions[currentQuestion()]" />
 </div>
 <div class="modal-footer border-0 p-0">
   <button type="button" (click)="getPrev()" class="btn back btn-outline-secondary text-capitalize">back</button>
