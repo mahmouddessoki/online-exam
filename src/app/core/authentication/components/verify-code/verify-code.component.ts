@@ -53,6 +53,7 @@ export class VerifyCodeComponent {
     let data = this.authForm.value;
     this.subscription = this.authApiService.verifyCode(data).subscribe({
       next: (res: any) => {
+        console.log(res);
         this.isLoading = false;
         this.resMsg = res.status;
         setTimeout(() => {

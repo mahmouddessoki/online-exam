@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -23,7 +23,8 @@ import { ValidationMessagesComponent } from '../validation-messages/validation-m
     FormBtnComponent
   ],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  styleUrl: './login.component.scss',
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class LoginComponent {
   private readonly fb = inject(FormBuilder)
@@ -37,10 +38,10 @@ export class LoginComponent {
   resMsg!: string;
   passwordFlag: boolean = false;
   rePasswordFlag: boolean = false;
-
   ngOnInit(): void {
     this.createForm()
   }
+
   createForm() {
     this.authForm = this.fb.group({
       email: [null, globalValidator.emailValidate],
@@ -92,5 +93,10 @@ export class LoginComponent {
   ngOnDestroy(): void {
     this.subscription?.unsubscribe();
   }
+
+
+  
+
+
 
 }

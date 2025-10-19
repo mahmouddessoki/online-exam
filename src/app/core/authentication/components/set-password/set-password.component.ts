@@ -60,6 +60,7 @@ export class SetPasswordComponent {
       email: this.authService.getUserEmail()!,
       newPassword: this.authForm.get('password')?.value,
     };
+    console.log(data);
     this.subscription = this.authApiService.setPassword(data).subscribe({
       next: (res) => {
         this.isLoading = false;

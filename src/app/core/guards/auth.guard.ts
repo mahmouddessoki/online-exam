@@ -6,14 +6,9 @@ export const authGuard: CanActivateFn = (route, state) => {
   const router = inject(Router)
   const storageService = inject(StorageService)
   const res = storageService.getItem("examToken")
-  let flag = false
-  if (res !== "not a browser" && res) {
+  if (res !== "not browser" && res) {
     router.navigate(['/dashboard'])
-    flag = false;
-
-  } else {
-    flag = true;
-
+    return false
   }
-  return flag;
+  return true;
 };

@@ -17,13 +17,14 @@ export class UserLayoutComponent implements AfterViewInit {
   logout(){
     if(isPlatformBrowser(this.platformId)) {
       localStorage.removeItem("examToken")
+      localStorage.removeItem("userEmail")
       this.router.navigate(['/login']);
     }
   }
 
 
   ngAfterViewInit(): void {
-    
+
   }
 
   hideNav(){

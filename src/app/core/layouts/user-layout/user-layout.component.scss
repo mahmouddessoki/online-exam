@@ -93,7 +93,7 @@
         line-height: 100%;
         display: flex;
         align-items: center;
-        gap: func.PXToREM(30px)+rem;
+        column-gap: func.PXToREM(30px)+rem;
         margin-bottom: func.PXToREM(32px)+rem;
         padding: func.PXToREM(12px)+rem func.PXToREM(8px)+rem;
         border-radius: 4px;
@@ -191,6 +191,17 @@ nav {
       }
     }
 
+        .aside-nav {
+
+          li {
+            a {
+              & {
+                margin-bottom: 0px !important;
+
+            }
+          }
+        }
+      }
 
 
 

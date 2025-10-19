@@ -59,6 +59,7 @@ export class ForgetPasswordComponent {
       next: (res) => {
         this.isLoading = false;
         this.resMsg = res.message;
+        this.authService.saveUserEmail(this.authForm.value.email)
         setTimeout(() => {
          this.authService.steps.set(1)
         },1500)
