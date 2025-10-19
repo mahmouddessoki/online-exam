@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AuthApiService } from 'auth-api';
+import { AuthApiService } from 'dessoki-auth-api';
 import { Router } from '@angular/router';
 
 import { Subscription } from 'rxjs';

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/cor
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { AuthApiService } from 'auth-api';
+import { AuthApiService } from 'dessoki-auth-api';
 import { Subscription } from 'rxjs';
 import { saveUserData } from '../../../../store/actions/auth.actions';
 import { FormBtnComponent } from "../../../layouts/auth-layout/components/form-btn/form-btn.component";
@@ -95,7 +95,7 @@ export class LoginComponent {
   }
 
 
-  
+
 
 
 

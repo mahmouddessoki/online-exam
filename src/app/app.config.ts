@@ -5,7 +5,7 @@ import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { environment } from '../environments/environment.development';
-import { BASE_URL } from 'auth-api';
+import { BASE_URL } from 'dessoki-auth-api';
 import { provideStore } from '@ngrx/store';
 import { authReducer } from './store/reducers/auth.reducer';
 import { provideEffects } from '@ngrx/effects';

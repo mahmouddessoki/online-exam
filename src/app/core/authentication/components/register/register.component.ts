@@ -1,7 +1,7 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { AuthApiService } from 'auth-api';
+import { AuthApiService } from 'dessoki-auth-api';
 import { Subscription } from 'rxjs';
 import { InputAlertDirective } from '../../directives/input-alert.directive';
 import { globalValidator } from '../../helpers/global-validators';

@@ -1,17 +1,17 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { AuthApiService } from 'auth-api';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { AuthApiService } from 'dessoki-auth-api';
 import { Subscription } from 'rxjs';
-import { globalValidator } from '../../helpers/global-validators';
-import { passwordMisMatch } from '../../helpers/password-match';
-import { InputAlertDirective } from '../../directives/input-alert.directive';
-import { ValidationMessagesComponent } from '../validation-messages/validation-messages.component';
+import { saveUserData } from '../../../../store/actions/auth.actions';
 import { FormBtnComponent } from "../../../layouts/auth-layout/components/form-btn/form-btn.component";
 import { ResponseMsgComponent } from "../../../layouts/auth-layout/components/response-msg/response-msg.component";
+import { InputAlertDirective } from '../../directives/input-alert.directive';
+import { globalValidator } from '../../helpers/global-validators';
+import { passwordMisMatch } from '../../helpers/password-match';
 import { AuthService } from '../../services/auth.service';
-import { Store } from '@ngrx/store';
-import { saveUserData } from '../../../../store/actions/auth.actions';
+import { ValidationMessagesComponent } from '../validation-messages/validation-messages.component';
 
 @Component({
   selector: 'app-set-password',

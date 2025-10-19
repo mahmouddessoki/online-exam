@@ -1,7 +1,7 @@
 import { Component, computed, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { AuthApiService } from 'auth-api';
+import { AuthApiService } from 'dessoki-auth-api';
 import { Subscription } from 'rxjs';
 import { FormBtnComponent } from "../../../layouts/auth-layout/components/form-btn/form-btn.component";
 import { ResponseMsgComponent } from "../../../layouts/auth-layout/components/response-msg/response-msg.component";
