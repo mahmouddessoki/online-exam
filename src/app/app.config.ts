@@ -17,7 +17,7 @@ import { answersReducer } from './store/reducers/ansewers.reducer';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes, withHashLocation() , withHashLocation()),
+    provideRouter(routes, withHashLocation()),
     provideHttpClient(
       withFetch(),
       withInterceptors([tokenAddInterceptor, loaderInterceptor])
