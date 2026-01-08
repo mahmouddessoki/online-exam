@@ -6,7 +6,7 @@
     }
   </p>
   <ul class="list-unstyled">
-    @for (ans of question?.answers; track ans.key) {
+    @for (ans of question.answers; track ans.key) {
     <li>
       <label [for]="ans.key" class="d-flex align-items-center gap-2" [class]="{
           'active':(question.type === 'single_choice' && selectedAnswers[question._id] === ans.key) ||
