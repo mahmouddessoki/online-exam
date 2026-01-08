@@ -1,8 +1,6 @@
 import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter, withHashLocation } from '@angular/router';
-
 import { routes } from './app.routes';
-import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { environment } from '../environments/environment.development';
 import { BASE_URL } from 'dessoki-auth-api';
@@ -20,18 +18,16 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes, withHashLocation()),
-    provideClientHydration(withEventReplay()),
-    provideHttpClient(withFetch(),
-      withInterceptors([tokenAddInterceptor, loaderInterceptor])),
-    { provide: BASE_URL, useValue: environment.API_URL },
+    provideHttpClient(
+      withFetch(),
+      withInterceptors([tokenAddInterceptor, loaderInterceptor])
+    ),
+    {provide: BASE_URL, useValue: environment.API_URL},
     provideStore({
       auth: authReducer,
-      answers: answersReducer
-    }), provideEffects([authEffects]),
-    importProvidersFrom(
-  BrowserAnimationsModule,
-      NgxSpinnerModule,
-    )
-
-  ]
+      answers: answersReducer,
+    }),
+    provideEffects([authEffects]),
+    importProvidersFrom(BrowserAnimationsModule, NgxSpinnerModule),
+  ],
 };
